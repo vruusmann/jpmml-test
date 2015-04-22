@@ -26,21 +26,38 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.2.7</version>
 			<scope>provided</scope>
-			
-			<!-- Needed for reading PMML, but not needed for writing PMML -->
-			<exclusions>
-				<exclusion>
-					<groupId>com.sun.xml.fastinfoset</groupId>
-					<artifactId>FastInfoset</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>com.sun.istack</groupId>
-					<artifactId>istack-commons-runtime</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 	</dependencies>
-	
+
+	<profiles>
+		<profile>
+			<activation>
+				<jdk>1.6</jdk>
+			</activation>
+
+			<dependencies>
+				<dependency>
+					<groupId>com.sun.xml.bind</groupId>
+					<artifactId>jaxb-impl</artifactId>
+					<version>2.2.7</version>
+					<scope>compile</scope>
+
+					<!-- Needed for reading PMML, but not needed for writing PMML -->
+					<exclusions>
+						<exclusion>
+							<groupId>com.sun.xml.fastinfoset</groupId>
+							<artifactId>FastInfoset</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>com.sun.istack</groupId>
+							<artifactId>istack-commons-runtime</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>

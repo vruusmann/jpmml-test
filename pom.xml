@@ -10,53 +10,16 @@
 		<dependency>
 			<groupId>org.jpmml</groupId>
 			<artifactId>pmml-model</artifactId>
-			<version>1.1.15</version>
-
-			<!-- Will be re-configured on a project basis, see below -->
-			<exclusions>
-				<exclusion>
-					<groupId>com.sun.xml.bind</groupId>
-					<artifactId>jaxb-impl</artifactId>
-				</exclusion>
-			</exclusions>
+			<version>1.2.7</version>
 		</dependency>
 
+		<!-- This dependency may be commented out if SAX Locator information is not needed -->
 		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.2.7</version>
-			<scope>provided</scope>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.2.11</version>
 		</dependency>
 	</dependencies>
-
-	<profiles>
-		<profile>
-			<activation>
-				<jdk>1.6</jdk>
-			</activation>
-
-			<dependencies>
-				<dependency>
-					<groupId>com.sun.xml.bind</groupId>
-					<artifactId>jaxb-impl</artifactId>
-					<version>2.2.7</version>
-					<scope>compile</scope>
-
-					<!-- Needed for reading PMML, but not needed for writing PMML -->
-					<exclusions>
-						<exclusion>
-							<groupId>com.sun.xml.fastinfoset</groupId>
-							<artifactId>FastInfoset</artifactId>
-						</exclusion>
-						<exclusion>
-							<groupId>com.sun.istack</groupId>
-							<artifactId>istack-commons-runtime</artifactId>
-						</exclusion>
-					</exclusions>
-				</dependency>
-			</dependencies>
-		</profile>
-	</profiles>
 
 	<build>
 		<plugins>
